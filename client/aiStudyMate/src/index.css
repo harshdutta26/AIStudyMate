@@ -1,0 +1,19 @@
+@import "tailwindcss";
+
+*{
+    margin: 0;
+    padding:0;
+}
+.webHeading{
+    display:inline;
+    border:2px solid black;
+    width:20%;
+    height:100%;
+    font-weight:bold;
+    overflow:hidden;
+    p{
+        display: inline;
+        font-size: 2rem;
+        background-color:pink;
+    }
+}
