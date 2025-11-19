@@ -1,12 +1,61 @@
-# React + Vite
+🎓 AIStudyMate – Smart Notes & Quiz Generator
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+An AI-powered study assistant that converts PDF/Text documents into summaries, key points, and automatically generated MCQs. Users can upload files, manage sessions, and generate quizzes in real-time.
 
-Currently, two official plugins are available:
+🚀 Features
+📁 File Upload & Management
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Upload documents (PDF, text, etc.)
 
-## Expanding the ESLint configuration
+Store uploaded files per user session
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Select a specific file for generating summary or MCQs
+
+🤖 AI-Powered Tools
+
+Generate structured summaries
+
+Generate Multiple Choice Questions (MCQs)
+
+Auto-ranking: evaluate user answers and provide score
+
+🔐 Authentication & Security
+
+Login & session management
+
+JWT-based user authentication
+
+Secure file handling
+
+🗂️ Dashboard
+
+View all uploaded files
+
+Select a file using a “Select (✓)” button
+
+Generate summaries & MCQs from the selected document
+
+🖥️ Tech Stack
+Frontend
+
+React
+
+Vite
+
+Tailwind CSS
+
+Backend
+
+Node.js
+
+Express.js
+
+MongoDB (Mongoose)
+
+JWT / Sessions
+
+Multer for file uploads
+
+AI
+
+Custom AI API (OpenAI / Gemini / or any LLM integration)
