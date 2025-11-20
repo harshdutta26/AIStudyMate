@@ -9,6 +9,7 @@ function Home() {
 const [fileSelected,setFileSelected]=useState(null)
 const {LoggedInUsername,setLoggedInUsername,isLoggedIn,setIsLoggedIn,toggle,setToggle}=useContext(MyContext);
 const navigate=useNavigate();
+const backendUrl = import.meta.env.VITE_BACKEND_URL;
 async function handleFileUpload(fileSelected){
   if(!fileSelected){
     console.log("No file Selected or upload");
@@ -19,7 +20,7 @@ async function handleFileUpload(fileSelected){
       const formData=new FormData();
       formData.append('file',fileSelected);
       formData.append('fileName',fileSelected.name);
-      const res=await fetch('http://localhost:3000/fileUpload',{
+      const res=await fetch(`${backendUrl}/fileUpload`,{
         method:'POST',
         body:formData,
         credentials:'include'
@@ -72,7 +73,7 @@ return ()=>clearTimeout(timer);
     const fetchedData = async () => {
     if (isLoggedIn) {
       try {
-        const res = await fetch('http://localhost:3000/',{method:"GET", credentials:'include',});
+        const res=await fetch(`${backendUrl}/`,{method:"GET", credentials:'include',});
         const data = await res.json();
         console.log("value in data is ",data)
         if (data) {
@@ -110,7 +111,7 @@ function handleMcqClick(){
   }
 }
 async function deleteFile(){
-  const res=await fetch('http://localhost:3000/delete',{ method:'GET', credentials:"include"});
+  const res=await fetch(`${backendUrl}/delete`,{ method:'GET', credentials:"include"});
   const data=await res.json();
   if(data.success){
     fetchedData();
@@ -121,7 +122,7 @@ async function deleteFile(){
 
 async function selectFileFromHistory(gotFileId){
   console.log("File Id in Frontend is ",gotFileId);
-  const res= await fetch('http://localhost:3000/selectFile',{method:'POST',headers: {
+  const res=await fetch(`${backendUrl}/selectFile`,{method:'POST',headers: {
       'Content-Type': 'application/json'
     },credentials:"include", body: JSON.stringify({ gotFileId })});
   const data=await res.json();

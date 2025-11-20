@@ -3,11 +3,11 @@ import React, { useEffect, useState } from 'react';
 function Summary() {
   const [response, setResponse] = useState('');
   const [formatted, setFormatted] = useState('');
-
+const backendUrl = import.meta.env.VITE_BACKEND_URL;
   useEffect(() => {
     async function fetchSummary() {
       try {
-        const res = await fetch('http://localhost:3000/Summary', {
+        const res=await fetch(`${backendUrl}/Summary`, {
           method: 'GET',
           credentials: 'include'
         });

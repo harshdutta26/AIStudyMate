@@ -7,10 +7,12 @@ function SignUp() {
   const [emailId,setEmailId]=useState('');
   const [hashPassword,setHashPassword]=useState('');
   const navigate=useNavigate()
+  const backendUrl = import.meta.env.VITE_BACKEND_URL;
    async  function handleSignUp(e){
         try{
           e.preventDefault();
-        const res=await fetch('http://localhost:3000/SignUp',{
+          console.log(`value of backend url is ${import.meta.env.VITE_BACKEND_URL}`)
+        const res=await fetch(`${backendUrl}/SignUp`,{
           method:'POST',
           headers:{"Content-Type":"application/json"},
           body:JSON.stringify
@@ -18,15 +20,38 @@ function SignUp() {
             username,emailId,hashPassword
           })
         });
-        const data=await res.json();
-        if(data.success){
-          setUsername('');
-          setEmailId('');
-          setHashPassword('');
-          setLoggedInUsername(data.username);
-          setIsLoggedIn(true);
-          navigate('/'); 
-        }
+        // const data=await res.json();
+        // if(data.success){
+        //   setUsername('');
+        //   setEmailId('');
+        //   setHashPassword('');
+        //   setLoggedInUsername(data.username);
+        //   setIsLoggedIn(true);
+        //   navigate('/'); 
+        // }
+
+        let data;
+try {
+  data = await res.json();
+} catch {
+  console.log("Server did not return JSON");
+  return;
+}
+
+if (!res.ok) {
+  console.log("Error:", data.message);
+  return;
+}
+
+if (data.success) {
+  setUsername("");
+  setEmailId("");
+  setHashPassword("");
+  setLoggedInUsername(data.username);
+  setIsLoggedIn(true);
+  navigate("/");
+}
+
         }
         catch(err){
           console.log(`Error while submitting ${err}`);
@@ -53,7 +78,7 @@ function SignUp() {
 
                  <div className='flex flex-col gap-1 md:gap-2 items-center justify-center'>
                           <label className='font-medium' htmlFor='emailId'>Email Address</label>
-            <input type="emailid" name='emailId'  className='border-2 border-black w-2/3 md:w-1/2 font-semibold md:text-3xl text-md' value={emailId} onChange={(e)=>setEmailId(e.target.value)} />
+            <input type="email" name='emailId'  className='border-2 border-black w-2/3 md:w-1/2 font-semibold md:text-3xl text-md' value={emailId} onChange={(e)=>setEmailId(e.target.value)} />
                 </div>
             <div className='flex flex-col gap-1 md:gap-2 items-center justify-center'>
         <label className='font-medium'htmlFor="hashPassword">Password</label>

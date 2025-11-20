@@ -6,12 +6,12 @@ import { MyContext } from './MyContext'
 function Mcq() {
    const [resMcq,setResMcq]=useState('')
    const {isLoggedIn,setIsLoggedIn,toggle}=useContext(MyContext);
-  
+  const backendUrl = import.meta.env.VITE_BACKEND_URL;
  useEffect(()=>{
   async function fetchMcq(){
   if(isLoggedIn){
     try{
-      const res=await fetch('http://localhost:3000/Mcq',{method:'GET',credentials:'include'});
+      const res=await fetch(`${backendUrl}/Mcq`,{method:'GET',credentials:'include'});
   const data=await res.json();
   if(data.success && data.mcq){
     console.log('data caught')

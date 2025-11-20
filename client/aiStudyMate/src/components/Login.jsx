@@ -6,11 +6,11 @@ function Login() {
   const [emailId,setEmailId]=useState('');
 const [hashPassword,setHashPassword]=useState('');
 const navigate=useNavigate();
-
+  const backendUrl = import.meta.env.VITE_BACKEND_URL;
   async function handleSignIn(e){
     try{
-      e.preventDefault();
-      const res=await fetch('http://localhost:3000/Login',{
+      e.preventDefault(); 
+      const res=await fetch(`${backendUrl}/Login`,{
         method:'POST',
         headers:{"Content-Type":"application/json"},
         body:JSON.stringify

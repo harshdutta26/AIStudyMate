@@ -5,10 +5,10 @@ import { useContext } from 'react'
 
   
 function Navbar() {
-
+  const backendUrl = import.meta.env.VITE_BACKEND_URL;
 const { isLoggedIn, setIsLoggedIn,toggle,setToggle } = useContext(MyContext)
   async function Logout(){
-            const res=await fetch('http://localhost:3000/Logout');
+            const res=await fetch(`${backendUrl}/Logout`);
             const data=await res.json();
             if(data.success){
                 console.log('Logout');
