@@ -186,9 +186,10 @@ app.post('/fileUpload',upload.single('file'),verifyToken,async(req,res)=>{    co
 app.post('/SignUp',async (req,res)=>{
     
     const {username,emailId,hashPassword}=req.body;
-    if(!username||!emailId){
-        return res.status(401).json({success:false,message:"Please enter username ,emailId, Password"})
-    }
+   if (!username || !emailId || !hashPassword) {
+  return res.status(400).json({ success: false, message: "All fields required" });
+}
+
     console.log(`hashpass is : ${hashPassword} email is ${emailId} and username is ${username}`)
     if(hashPassword.length<6){
         return res.status(400).json({success:false,message:"Password length should be at least 6 characters long"})
