@@ -22,7 +22,7 @@ const navigate=useNavigate();
       const data=await res.json();
       if(data.success){
         setEmailId('');
-        setHashPassword(' ');
+        setHashPassword('');
         console.log('Data sucess');
         setIsLoggedIn(true);
         setLoggedInUsername(data.username);
