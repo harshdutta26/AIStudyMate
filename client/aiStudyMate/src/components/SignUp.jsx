@@ -15,6 +15,7 @@ function SignUp() {
         const res=await fetch(`${backendUrl}/SignUp`,{
           method:'POST',
           headers:{"Content-Type":"application/json"},
+           credentials: "include",
           body:JSON.stringify
           ({
             username,emailId,hashPassword

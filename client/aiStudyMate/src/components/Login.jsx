@@ -13,11 +13,11 @@ const navigate=useNavigate();
       const res=await fetch(`${backendUrl}/Login`,{
         method:'POST',
         headers:{"Content-Type":"application/json"},
+         credentials: "include",
         body:JSON.stringify
         ({
           emailId,hashPassword
-        }),
-        credentials:"include"
+        })
       });
       const data=await res.json();
       if(data.success){

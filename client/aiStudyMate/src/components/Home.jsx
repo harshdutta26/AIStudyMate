@@ -73,7 +73,7 @@ return ()=>clearTimeout(timer);
     const fetchedData = async () => {
     if (isLoggedIn) {
       try {
-        const res=await fetch(`${backendUrl}/`,{method:"GET", credentials:'include',});
+        const res=await fetch(`${backendUrl}`,{method:"GET", credentials:'include',});
         const data = await res.json();
         console.log("value in data is ",data)
         if (data) {
