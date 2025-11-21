@@ -29,7 +29,7 @@ app.use(express.json());
 app.use(
   cors({
     origin: isProd
-      ? "https://aistudymate.vercel.app"
+      ? "https://ai-study-mate-omega.vercel.app"
       : "http://localhost:5173",
     credentials: true,
   })
